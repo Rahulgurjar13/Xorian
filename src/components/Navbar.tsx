@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-lg' : 'bg-background/50 backdrop-blur-sm'
       }`}
     >
@@ -74,23 +74,43 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-16 sm:top-20 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border shadow-2xl">
-            <div className="flex flex-col p-6 gap-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border/30 last:border-0"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Button variant="heroOutline" className="mt-2 w-full">
-                Defense Inquiry
-              </Button>
+          <>
+            {/* Stronger Backdrop to hide background content */}
+            <div 
+              className="lg:hidden fixed inset-0 bg-black/90 backdrop-blur-lg z-[45]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Menu Content with better spacing */}
+            <div className="lg:hidden fixed top-16 sm:top-20 left-0 right-0 bg-background/95 backdrop-blur-2xl border-b border-border/30 shadow-2xl z-[50]">
+              <div className="px-6 py-8">
+                {/* Navigation Links with more spacing */}
+                <nav className="flex flex-col gap-2 mb-8">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="text-lg font-medium text-foreground hover:text-accent transition-all duration-300 py-4 px-4 hover:bg-accent/10 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+                
+                {/* CTA Button with top padding */}
+                <div className="pt-4 border-t border-border/30">
+                  <Button 
+                    variant="hero" 
+                    className="w-full h-14 text-base font-semibold"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Defense Inquiry
+                  </Button>
+                </div>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </nav>

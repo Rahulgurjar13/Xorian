@@ -58,10 +58,10 @@ const ContactSection = () => {
             {/* Contact Info */}
             <div className="space-y-6">
               {[
-                { icon: Building, label: 'Headquarters', value: 'Bengaluru, Karnataka, India' },
+                { icon: Building, label: 'Headquarters', value: 'Kanpur, Uttar Pradesh, India' },
                 { icon: Mail, label: 'Email', value: 'defense@xorian.in' },
                 { icon: Phone, label: 'Defense Hotline', value: '+91 80 XXXX XXXX' },
-                { icon: MapPin, label: 'R&D Center', value: 'Hyderabad, Telangana' },
+                { icon: MapPin, label: 'R&D Center', value: 'Greater Noida, Uttar Pradesh' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="w-12 h-12 border border-border flex items-center justify-center shrink-0">
