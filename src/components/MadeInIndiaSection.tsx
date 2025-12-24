@@ -1,4 +1,4 @@
-import { Flag, Award, Cpu, Users } from 'lucide-react';
+import { Flag, Cpu, Zap, MapPin } from 'lucide-react';
 
 const MadeInIndiaSection = () => {
   return (
@@ -38,8 +38,8 @@ const MadeInIndiaSection = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
               { icon: Cpu, label: 'Indigenous R&D', value: '100%' },
-              { icon: Users, label: 'Indian Engineers', value: '500+' },
-              { icon: Award, label: 'Patents Filed', value: '25+' },
+              { icon: Zap, label: 'Flight Control', value: 'AI Powered' },
+              { icon: MapPin, label: 'Developed', value: 'Made in India' },
               { icon: Flag, label: 'Self-Reliant', value: 'Fully' },
             ].map((item) => (
               <div key={item.label} className="relative p-4 sm:p-6 bg-card/50 backdrop-blur-xl group cursor-pointer hover-card-smooth hover-glow">
