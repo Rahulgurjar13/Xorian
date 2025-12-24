@@ -262,17 +262,6 @@
   }
 }
 
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -287,4 +276,90 @@
 
 .animation-delay-600 {
   animation-delay: 600ms;
+}
+
+/* Professional Corner Bracket Hover Effect */
+.corner-bracket {
+  --bracket-color: hsl(0 0% 100%);
+  --bracket-size: 32px;
+  --bracket-thickness: 1px;
+  --bracket-duration: 600ms;
+  --bracket-easing: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.corner-bracket::before,
+.corner-bracket::after,
+.corner-bracket .bracket-bl::before,
+.corner-bracket .bracket-br::before {
+  content: '';
+  position: absolute;
+  background: var(--bracket-color);
+  opacity: 0;
+  transition: all var(--bracket-duration) var(--bracket-easing);
+}
+
+/* Corner bracket line styles */
+.bracket-line {
+  position: absolute;
+  background: hsl(0 0% 100%);
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bracket-line-h {
+  height: 1px;
+  width: 32px;
+}
+
+.bracket-line-v {
+  width: 1px;
+  height: 32px;
+}
+
+/* Smooth hover card base */
+.hover-card-smooth {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-card-smooth:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px hsl(0 0% 100% / 0.06),
+              0 0 0 1px hsl(0 0% 100% / 0.03);
+}
+
+/* Corner bracket container animations with staggered delays */
+.corner-tl .bracket-line {
+  transition-delay: 0ms;
+}
+
+.corner-tr .bracket-line {
+  transition-delay: 50ms;
+}
+
+.corner-bl .bracket-line {
+  transition-delay: 100ms;
+}
+
+.corner-br .bracket-line {
+  transition-delay: 150ms;
+}
+
+/* Glow effect on hover */
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    hsl(0 0% 100% / 0.02) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.hover-glow:hover::after {
+  opacity: 1;
 }

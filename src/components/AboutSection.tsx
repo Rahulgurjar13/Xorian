@@ -22,7 +22,7 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
           const end = value;
           const duration = 2000;
           const increment = end / (duration / 16);
-          
+
           const timer = setInterval(() => {
             start += increment;
             if (start >= end) {
@@ -54,7 +54,7 @@ const AboutSection = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 tech-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 md:mb-20">
@@ -69,9 +69,9 @@ const AboutSection = () => {
             <span className="text-gradient block mt-2">Drone Revolution</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Xorian Industries stands at the forefront of indigenous defense technology, 
-            developing cutting-edge surveillance drones and flight control systems entirely 
-            within India. Our commitment to self-reliance drives innovation in every component 
+            Xorian Industries stands at the forefront of indigenous defense technology,
+            developing cutting-edge surveillance drones and flight control systems entirely
+            within India. Our commitment to self-reliance drives innovation in every component
             we engineer.
           </p>
         </div>
@@ -79,49 +79,109 @@ const AboutSection = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
           {stats.map((stat, index) => (
-            <div 
+            <div
               key={stat.label}
-              className="glass-card p-4 sm:p-6 md:p-8 hover-lift group"
+              className="relative p-4 sm:p-6 md:p-8 bg-card/50 backdrop-blur-xl group cursor-pointer hover-card-smooth hover-glow"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <stat.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-foreground mb-3 sm:mb-4 group-hover:scale-110 transition-transform" />
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mt-1 sm:mt-2">
-                {stat.label}
-              </p>
+              {/* Corner brackets with staggered smooth animation */}
+              <div className="corner-tl absolute top-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)' }}>
+                <div className="bracket-line w-6 h-[1px] origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+                <div className="bracket-line w-[1px] h-6 origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+              </div>
+              <div className="corner-tr absolute top-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }}>
+                <div className="bracket-line w-6 h-[1px] origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+                <div className="bracket-line w-[1px] h-6 origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+              </div>
+              <div className="corner-bl absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }}>
+                <div className="bracket-line w-[1px] h-6 origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+                <div className="bracket-line w-6 h-[1px] origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+              </div>
+              <div className="corner-br absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }}>
+                <div className="bracket-line w-[1px] h-6 origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+                <div className="bracket-line w-6 h-[1px] origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+              </div>
+
+              <div className="relative z-10">
+                <stat.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-foreground mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-500" />
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <p className="text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mt-1 sm:mt-2">
+                  {stat.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Mission Grid */}
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-          <div className="glass-card p-10 hover-lift">
-            <h3 className="text-2xl font-display font-semibold mb-4 text-foreground">
-              Our Mission
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              To establish India as a global leader in unmanned aerial systems through 
-              relentless innovation, indigenous development, and unwavering commitment 
-              to national security.
-            </p>
-            <div className="flex items-center gap-2 text-foreground">
-              <div className="w-8 h-px bg-foreground" />
-              <span className="font-tech text-sm tracking-wider">ATMANIRBHAR BHARAT</span>
+          <div className="relative p-10 bg-card/50 backdrop-blur-xl group cursor-pointer hover-card-smooth hover-glow">
+            {/* Corner brackets with staggered smooth animation */}
+            <div className="corner-tl absolute top-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)' }}>
+              <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+              <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+            </div>
+            <div className="corner-tr absolute top-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }}>
+              <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+              <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+            </div>
+            <div className="corner-bl absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }}>
+              <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+              <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+            </div>
+            <div className="corner-br absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }}>
+              <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+              <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+            </div>
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-display font-semibold mb-4 text-foreground">
+                Our Mission
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                To establish India as a global leader in unmanned aerial systems through
+                relentless innovation, indigenous development, and unwavering commitment
+                to national security.
+              </p>
+              <div className="flex items-center gap-2 text-foreground">
+                <div className="w-8 h-px bg-foreground" />
+                <span className="font-tech text-sm tracking-wider">ATMANIRBHAR BHARAT</span>
+              </div>
             </div>
           </div>
 
-          <div className="glass-card p-10 hover-lift">
-            <h3 className="text-2xl font-display font-semibold mb-4 text-foreground">
-              Our Vision
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              To be the trusted partner for defense forces worldwide, delivering 
-              autonomous systems that redefine the boundaries of surveillance, 
-              reconnaissance, and strategic operations.
-            </p>
-            <div className="flex items-center gap-2 text-foreground">
-              <div className="w-8 h-px bg-foreground" />
-              <span className="font-tech text-sm tracking-wider">GLOBAL EXCELLENCE</span>
+          <div className="relative p-10 bg-card/50 backdrop-blur-xl group cursor-pointer hover-card-smooth hover-glow">
+            {/* Corner brackets with staggered smooth animation */}
+            <div className="corner-tl absolute top-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)' }}>
+              <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+              <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+            </div>
+            <div className="corner-tr absolute top-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }}>
+              <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+              <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+            </div>
+            <div className="corner-bl absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }}>
+              <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+              <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+            </div>
+            <div className="corner-br absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }}>
+              <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+              <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+            </div>
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-display font-semibold mb-4 text-foreground">
+                Our Vision
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                To be the trusted partner for defense forces worldwide, delivering
+                autonomous systems that redefine the boundaries of surveillance,
+                reconnaissance, and strategic operations.
+              </p>
+              <div className="flex items-center gap-2 text-foreground">
+                <div className="w-8 h-px bg-foreground" />
+                <span className="font-tech text-sm tracking-wider">GLOBAL EXCELLENCE</span>
+              </div>
             </div>
           </div>
         </div>

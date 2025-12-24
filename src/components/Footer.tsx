@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="py-12 sm:py-16 border-t border-border/30 relative">
       <div className="absolute inset-0 tech-grid opacity-5" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12">
           {/* Logo */}
@@ -21,7 +21,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-sm leading-relaxed">
-              Indigenous defense technology solutions for a self-reliant India. 
+              Indigenous defense technology solutions for a self-reliant India.
               Engineering excellence in unmanned aerial systems.
             </p>
           </div>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="pt-6 sm:pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
           <p className="text-xs sm:text-sm text-muted-foreground text-center md:text-left">
-            © 2024 Xorian Industries. All rights reserved.
+            © 2026 Xorian Industries. All rights reserved.
           </p>
           <div className="flex items-center gap-2 flex-wrap justify-center">
             <span className="text-[10px] sm:text-xs font-tech tracking-wider text-muted-foreground whitespace-nowrap">

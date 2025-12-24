@@ -40,7 +40,7 @@ const TechnologySection = () => {
       <div className="absolute inset-0 tech-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+
       {/* Glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-foreground/5 rounded-full blur-3xl -translate-y-1/2" />
 
@@ -59,7 +59,7 @@ const TechnologySection = () => {
             <span className="text-gradient block">System</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our flight control system represents the pinnacle of Indian engineering excellence. 
+            Our flight control system represents the pinnacle of Indian engineering excellence.
             Built from the ground up with zero dependency on foreign technology.
           </p>
         </div>
@@ -71,14 +71,14 @@ const TechnologySection = () => {
             <div className="aspect-square border border-border/30 relative overflow-hidden">
               {/* Grid overlay */}
               <div className="absolute inset-0 tech-grid opacity-30" />
-              
+
               {/* Central Unit */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative">
                   {/* Outer rings */}
                   <div className="absolute inset-0 w-64 h-64 border border-foreground/20 rounded-full animate-pulse-slow" style={{ margin: '-4rem' }} />
                   <div className="absolute inset-0 w-48 h-48 border border-foreground/30 rounded-full animate-pulse-slow" style={{ margin: '-2rem', animationDelay: '0.5s' }} />
-                  
+
                   {/* Core */}
                   <div className="w-32 h-32 border border-foreground bg-foreground/10 rounded-full flex items-center justify-center">
                     <Cpu className="w-12 h-12 text-foreground" />
@@ -128,20 +128,44 @@ const TechnologySection = () => {
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {techFeatures.map((feature, index) => (
-            <div 
+            <div
               key={feature.title}
-              className="glass-card p-8 hover-lift group"
+              className="relative p-8 bg-card/50 backdrop-blur-xl group cursor-pointer hover-card-smooth hover-glow"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 border border-foreground/30 flex items-center justify-center mb-6 group-hover:border-foreground transition-colors">
-                <feature.icon className="w-6 h-6 text-foreground" />
+              {/* Corner brackets with staggered smooth animation */}
+              {/* Top Left ┌ */}
+              <div className="corner-tl absolute top-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)' }}>
+                <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+                <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
               </div>
-              <h4 className="text-lg font-display font-semibold mb-3 text-foreground">
-                {feature.title}
-              </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
+              {/* Top Right ┐ */}
+              <div className="corner-tr absolute top-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }}>
+                <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+                <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+              </div>
+              {/* Bottom Left └ */}
+              <div className="corner-bl absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }}>
+                <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+                <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+              </div>
+              {/* Bottom Right ┘ */}
+              <div className="corner-br absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }}>
+                <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+                <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+              </div>
+
+              <div className="relative z-10">
+                <div className="w-12 h-12 border border-foreground/30 flex items-center justify-center mb-6 group-hover:border-foreground transition-all duration-500">
+                  <feature.icon className="w-6 h-6 text-foreground" />
+                </div>
+                <h4 className="text-lg font-display font-semibold mb-3 text-foreground">
+                  {feature.title}
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

@@ -51,7 +51,7 @@ const ContactSection = () => {
               <span className="text-gradient block">Inquiry</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-              Connect with our defense solutions team for procurement inquiries, 
+              Connect with our defense solutions team for procurement inquiries,
               technical demonstrations, or partnership opportunities.
             </p>
 
@@ -59,7 +59,7 @@ const ContactSection = () => {
             <div className="space-y-6">
               {[
                 { icon: Building, label: 'Headquarters', value: 'Kanpur, Uttar Pradesh, India' },
-                { icon: Mail, label: 'Email', value: 'defense@xorian.in' },
+                { icon: Mail, label: 'Email', value: 'quieres@xorianindustries.com' },
                 { icon: Phone, label: 'Defense Hotline', value: '+91 80 XXXX XXXX' },
                 { icon: MapPin, label: 'R&D Center', value: 'Greater Noida, Uttar Pradesh' },
               ].map((item) => (
@@ -81,7 +81,7 @@ const ContactSection = () => {
             <div className="mt-10 p-6 border border-foreground/30 bg-foreground/5">
               <p className="text-sm text-muted-foreground">
                 <span className="text-foreground font-tech tracking-wider">SECURITY NOTICE: </span>
-                All inquiries are handled through secure channels. Verification may be required 
+                All inquiries are handled through secure channels. Verification may be required
                 for defense and government entities.
               </p>
             </div>

@@ -40,7 +40,7 @@ const ApplicationsSection = () => {
       <div className="absolute inset-0 tech-grid opacity-10" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+
       {/* Glow */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-foreground/5 rounded-full blur-3xl" />
 
@@ -59,7 +59,7 @@ const ApplicationsSection = () => {
             <span className="text-gradient block">Profiles</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our drone systems are deployed across diverse operational scenarios, 
+            Our drone systems are deployed across diverse operational scenarios,
             delivering unmatched capability and reliability.
           </p>
         </div>
@@ -69,15 +69,34 @@ const ApplicationsSection = () => {
           {applications.map((app, index) => (
             <div
               key={app.title}
-              className="group relative p-8 border border-border/30 bg-background/50 backdrop-blur-sm hover:border-foreground/50 transition-all duration-500"
+              className="group relative p-8 bg-background/50 backdrop-blur-sm hover-card-smooth hover-glow cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Hover glow */}
-              <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+              {/* Corner brackets with staggered smooth animation */}
+              {/* Top Left ┌ */}
+              <div className="corner-tl absolute top-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)' }}>
+                <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+                <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '0ms' }} />
+              </div>
+              {/* Top Right ┐ */}
+              <div className="corner-tr absolute top-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }}>
+                <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+                <div className="bracket-line bracket-line-v origin-top scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '50ms' }} />
+              </div>
+              {/* Bottom Left └ */}
+              <div className="corner-bl absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }}>
+                <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+                <div className="bracket-line bracket-line-h origin-left scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '100ms' }} />
+              </div>
+              {/* Bottom Right ┘ */}
+              <div className="corner-br absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 pointer-events-none flex flex-col justify-end items-end" style={{ transition: 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }}>
+                <div className="bracket-line bracket-line-v origin-bottom scale-y-0 group-hover:scale-y-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+                <div className="bracket-line bracket-line-h origin-right scale-x-0 group-hover:scale-x-100" style={{ transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)', transitionDelay: '150ms' }} />
+              </div>
+
               <div className="relative z-10">
-                <div className="w-14 h-14 border border-border group-hover:border-foreground/50 flex items-center justify-center mb-6 transition-colors">
-                  <app.icon className="w-7 h-7 text-muted-foreground group-hover:text-foreground transition-colors" />
+                <div className="w-14 h-14 border border-border group-hover:border-foreground/50 flex items-center justify-center mb-6 transition-all duration-500">
+                  <app.icon className="w-7 h-7 text-muted-foreground group-hover:text-foreground transition-colors duration-500" />
                 </div>
                 <h3 className="text-xl font-display font-semibold mb-3 text-foreground">
                   {app.title}
@@ -86,9 +105,6 @@ const ApplicationsSection = () => {
                   {app.description}
                 </p>
               </div>
-
-              {/* Corner accent */}
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>

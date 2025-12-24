@@ -75,34 +75,35 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <>
-            {/* Stronger Backdrop to hide background content */}
+            {/* Full Screen Backdrop - Completely covers everything below navbar */}
             <div 
-              className="lg:hidden fixed inset-0 bg-black/90 backdrop-blur-lg z-[45]"
+              className="lg:hidden fixed inset-0 top-0 bg-black/95 z-[60]"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Menu Content with better spacing */}
-            <div className="lg:hidden fixed top-16 sm:top-20 left-0 right-0 bg-background/95 backdrop-blur-2xl border-b border-border/30 shadow-2xl z-[50]">
-              <div className="px-6 py-8">
-                {/* Navigation Links with more spacing */}
-                <nav className="flex flex-col gap-2 mb-8">
-                  {navLinks.map((link) => (
+            {/* Menu Content - Above backdrop */}
+            <div className="lg:hidden fixed top-16 sm:top-20 left-0 right-0 bg-background border-t border-border shadow-2xl z-[70]">
+              <div className="flex flex-col p-6 gap-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+                {/* Navigation Links */}
+                <div className="flex flex-col gap-3">
+                  {navLinks.map((link, index) => (
                     <a
                       key={link.href}
                       href={link.href}
-                      className="text-lg font-medium text-foreground hover:text-accent transition-all duration-300 py-4 px-4 hover:bg-accent/10 rounded-lg"
+                      className="text-lg font-medium text-foreground hover:text-accent transition-all duration-300 py-3 px-4 rounded-lg hover:bg-accent/10 border-b border-border/20 last:border-0"
                       onClick={() => setIsMobileMenuOpen(false)}
+                      style={{ animationDelay: `${index * 50}ms` }}
                     >
                       {link.label}
                     </a>
                   ))}
-                </nav>
+                </div>
                 
-                {/* CTA Button with top padding */}
+                {/* CTA Button */}
                 <div className="pt-4 border-t border-border/30">
                   <Button 
                     variant="hero" 
-                    className="w-full h-14 text-base font-semibold"
+                    className="w-full h-12 text-base"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Defense Inquiry
