@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Target, Zap, Globe, Award } from 'lucide-react';
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Active Deployments', icon: Target },
   { value: 100, suffix: '%', label: 'Indigenous Tech', icon: Zap },
-  { value: 15, suffix: '+', label: 'Years Experience', icon: Award },
   { value: 24, suffix: '/7', label: 'Support Available', icon: Globe },
 ];
 
@@ -77,7 +75,7 @@ const AboutSection = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20 max-w-2xl mx-auto">
           {stats.map((stat, index) => (
             <div
               key={stat.label}

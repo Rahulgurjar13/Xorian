@@ -6,22 +6,22 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroDrone})` }}
       />
       <div className="absolute inset-0 bg-background/85" />
-      
+
       {/* Animated Grid Background */}
       <div className="absolute inset-0 tech-grid animate-grid opacity-20" />
-      
+
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      
+
       {/* Floating Elements */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 border border-border/20 rotate-45 animate-pulse-slow opacity-20 hidden lg:block" />
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border border-border/20 rotate-12 animate-pulse-slow opacity-20 hidden lg:block" style={{ animationDelay: '1s' }} />
-      
+
       {/* Glow Effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-foreground/5 rounded-full blur-3xl animate-pulse-slow" />
 
@@ -46,7 +46,7 @@ const HeroSection = () => {
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-3 sm:mb-4 font-display animate-fade-in-up animation-delay-400 px-4">
             Advanced Surveillance Systems • Custom Flight Control • Defense Solutions
           </p>
-          
+
           {/* Made in India Badge */}
           <div className="flex items-center justify-center gap-2 mb-8 sm:mb-10 animate-fade-in-up animation-delay-400">
             <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-foreground/50" />
@@ -72,7 +72,7 @@ const HeroSection = () => {
               <div className="flex items-center justify-center mb-1 sm:mb-2">
                 <Radar className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
               </div>
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-foreground">500km+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-foreground">15 km</div>
               <div className="text-[10px] sm:text-xs text-muted-foreground font-tech tracking-wider mt-1">MAX RANGE</div>
             </div>
             <div className="text-center border-x border-border/30 px-2">

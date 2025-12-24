@@ -26,6 +26,7 @@ const drones = [
       'Real-time HD streaming',
       'Autonomous patrol modes',
     ],
+    isUpcoming: false,
   },
   {
     name: 'GUARDIAN PRO',
@@ -47,6 +48,7 @@ const drones = [
       'Electronic warfare suite',
       'AI-powered threat detection',
     ],
+    isUpcoming: true,
   },
   {
     name: 'HAWK DEFENSE',
@@ -68,6 +70,7 @@ const drones = [
       'VTOL capability',
       'Swarm coordination ready',
     ],
+    isUpcoming: true,
   },
   {
     name: 'VANGUARD SERIES',
@@ -89,6 +92,7 @@ const drones = [
       'Self-coordinating formations',
       'Machine learning adaptation',
     ],
+    isUpcoming: true,
   },
 ];
 
@@ -114,7 +118,7 @@ const DronesSection = () => {
             <span className="text-gradient block mt-2">Platforms</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground px-4">
-            Purpose-built unmanned aerial systems for every defense and surveillance requirement. 
+            Purpose-built unmanned aerial systems for every defense and surveillance requirement.
             Each platform engineered with indigenous technology.
           </p>
         </div>
@@ -122,7 +126,11 @@ const DronesSection = () => {
         {/* Drone Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {drones.map((drone, index) => (
-            <div key={drone.name} className="w-full" style={{ animationDelay: `${index * 150}ms` }}>
+            <div
+              key={drone.name}
+              className="w-full"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <DroneCard drone={drone} />
             </div>
           ))}
