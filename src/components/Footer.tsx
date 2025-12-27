@@ -1,6 +1,34 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoImage from '@/assets/Gemini_Generated_Image_qd4wj2qd4wj2qd4w-removebg-preview.png';
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
+
+  // Handle quick link click - navigate to home with hash if not on home page
+  const handleQuickLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    if (isHomePage) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/#' + section);
+    }
+  };
+
+  // Handle logo click
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <footer className="py-12 sm:py-16 border-t border-border/30 relative">
       <div className="absolute inset-0 tech-grid opacity-5" />
@@ -10,11 +38,11 @@ const Footer = () => {
           {/* Logo */}
           <div className="md:col-span-2">
             <div className="mb-4 sm:mb-6">
-              <a href="#" className="inline-block">
+              <a href="/" onClick={handleLogoClick} className="inline-block cursor-pointer">
                 <img
                   src={logoImage}
                   alt="Xorian Industries"
-                  className="h-24 sm:h-28 w-auto hover:opacity-80 transition-opacity cursor-pointer"
+                  className="h-24 sm:h-28 w-auto hover:opacity-80 transition-opacity"
                 />
               </a>
             </div>
@@ -33,8 +61,9 @@ const Footer = () => {
               {['About', 'Technology', 'Drones', 'Applications', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    href={`/#${link.toLowerCase()}`}
+                    onClick={(e) => handleQuickLinkClick(e, link.toLowerCase())}
+                    className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                   >
                     {link}
                   </a>
@@ -56,12 +85,12 @@ const Footer = () => {
                 { name: 'Compliance', path: '/compliance' },
               ].map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.path}
+                  <Link
+                    to={link.path}
                     className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -78,7 +107,7 @@ const Footer = () => {
               INDIGENOUS TECHNOLOGY
             </span>
             <span className="text-accent">•</span>
-            <span className="text-[10px] sm:text-xs font-tech tracking-wider text-accent whitespace-nowrap">
+            <span className="text-[10px] sm:text-xs font-tech tracking-wider text-muted-foreground whitespace-nowrap">
               MADE IN INDIA
             </span>
           </div>
