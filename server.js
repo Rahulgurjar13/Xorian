@@ -177,11 +177,17 @@ app.post('/api/contact', async (req, res) => {
         
         <!-- Footer -->
         <tr>
-          <td style="background-color:#f0f0f0;padding:20px;text-align:center;border-radius:0 0 8px 8px;">
-            <p style="margin:0;color:#888888;font-size:12px;">
-              Xorian Industries Pvt. Ltd. | Kanpur, Uttar Pradesh, India
-            </p>
+          <td style="background-color:#0a0a0a;padding:40px 30px;text-align:center;border-top:1px solid #222222;">
+            <h3 style="margin:0 0 12px 0;color:#ffffff;font-size:18px;font-weight:600;letter-spacing:6px;text-transform:uppercase;">XORIAN INDUSTRIES</h3>
+            <p style="margin:0 0 6px 0;color:#888888;font-size:12px;letter-spacing:2px;">Engineering Excellence in Unmanned Aerial Systems</p>
+            <p style="margin:0 0 20px 0;color:#666666;font-size:11px;letter-spacing:1px;">Advancing India's Defense Capabilities</p>
+            <div style="height:1px;background-color:#222222;margin:0 auto 20px auto;max-width:300px;"></div>
+            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2025 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
+            <p style="margin:0;color:#666666;font-size:11px;">Made in India 🇮🇳</p>
           </td>
+        </tr>
+        <tr>
+          <td style="background-color:#c41e3a;height:4px;"></td>
         </tr>
         
       </table>
@@ -300,13 +306,17 @@ app.post('/api/contact', async (req, res) => {
         
         <!-- Footer -->
         <tr>
-          <td style="background-color:#f0f0f0;padding:20px;text-align:center;border-radius:0 0 8px 8px;">
-            <p style="margin:0 0 5px 0;color:#666666;font-size:13px;font-weight:bold;">Xorian Industries Pvt. Ltd.</p>
-            <p style="margin:0;color:#888888;font-size:12px;">Kanpur, Uttar Pradesh, India</p>
-            <p style="margin:10px 0 0 0;">
-              <a href="https://xorianindustries.com" style="color:#c41e3a;text-decoration:none;font-size:12px;">www.xorianindustries.com</a>
-            </p>
+          <td style="background-color:#0a0a0a;padding:40px 30px;text-align:center;border-top:1px solid #222222;">
+            <h3 style="margin:0 0 12px 0;color:#ffffff;font-size:18px;font-weight:600;letter-spacing:6px;text-transform:uppercase;">XORIAN INDUSTRIES</h3>
+            <p style="margin:0 0 6px 0;color:#888888;font-size:12px;letter-spacing:2px;">Engineering Excellence in Unmanned Aerial Systems</p>
+            <p style="margin:0 0 20px 0;color:#666666;font-size:11px;letter-spacing:1px;">Advancing India's Defense Capabilities</p>
+            <div style="height:1px;background-color:#222222;margin:0 auto 20px auto;max-width:300px;"></div>
+            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2025 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
+            <p style="margin:0;color:#666666;font-size:11px;">Made in India 🇮🇳</p>
           </td>
+        </tr>
+        <tr>
+          <td style="background-color:#c41e3a;height:4px;"></td>
         </tr>
         
       </table>
