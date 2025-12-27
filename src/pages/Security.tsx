@@ -68,7 +68,6 @@ const Security = () => {
                                 <p>Our infrastructure is built with defense-grade security in mind:</p>
                                 <ul className="list-disc list-inside space-y-2 ml-4">
                                     <li>All servers located within India for data sovereignty</li>
-                                    <li>Tier-4 data center facilities with physical security</li>
                                     <li>Redundant power and network connections</li>
                                     <li>Regular backup and disaster recovery protocols</li>
                                     <li>Isolated network segments for sensitive operations</li>
