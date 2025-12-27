@@ -169,7 +169,7 @@ export default async function handler(req, res) {
             <p style="margin:0 0 6px 0;color:#888888;font-size:12px;letter-spacing:2px;">Engineering Excellence in Unmanned Aerial Systems</p>
             <p style="margin:0 0 20px 0;color:#666666;font-size:11px;letter-spacing:1px;">Advancing India's Defense Capabilities</p>
             <div style="height:1px;background-color:#222222;margin:0 auto 20px auto;max-width:300px;"></div>
-            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2025 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
+            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2026 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
             <p style="margin:0;color:#666666;font-size:11px;">Made in India 🇮🇳</p>
           </td>
         </tr>
@@ -293,7 +293,7 @@ export default async function handler(req, res) {
             <p style="margin:0 0 6px 0;color:#888888;font-size:12px;letter-spacing:2px;">Engineering Excellence in Unmanned Aerial Systems</p>
             <p style="margin:0 0 20px 0;color:#666666;font-size:11px;letter-spacing:1px;">Advancing India's Defense Capabilities</p>
             <div style="height:1px;background-color:#222222;margin:0 auto 20px auto;max-width:300px;"></div>
-            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2025 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
+            <p style="margin:0 0 8px 0;color:#555555;font-size:11px;">© 2026 Xorian Industries Pvt. Ltd. • All Rights Reserved</p>
             <p style="margin:0;color:#666666;font-size:11px;">Made in India 🇮🇳</p>
           </td>
         </tr>
