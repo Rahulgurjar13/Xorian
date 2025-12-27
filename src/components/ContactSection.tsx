@@ -5,6 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     organization: '',
     name: '',
@@ -14,20 +15,48 @@ const ContactSection = () => {
     requirements: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Inquiry Submitted",
-      description: "Our defense solutions team will contact you within 24 hours.",
-    });
-    setFormData({
-      organization: '',
-      name: '',
-      email: '',
-      phone: '',
-      application: '',
-      requirements: '',
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "✅ Inquiry Submitted Successfully",
+          description: "Our defense solutions team will contact you within 24-48 hours. Check your email for confirmation.",
+          duration: 5000,
+        });
+        setFormData({
+          organization: '',
+          name: '',
+          email: '',
+          phone: '',
+          application: '',
+          requirements: '',
+        });
+      } else {
+        throw new Error(data.error || 'Failed to submit inquiry');
+      }
+    } catch (error) {
+      toast({
+        title: "❌ Submission Failed",
+        description: error instanceof Error ? error.message : "Please try again later or contact us directly at quieres@xorianindustries.com",
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,7 +89,7 @@ const ContactSection = () => {
               {[
                 { icon: Building, label: 'Headquarters', value: 'Kanpur, Uttar Pradesh, India' },
                 { icon: Mail, label: 'Email', value: 'quieres@xorianindustries.com' },
-                { icon: Phone, label: 'Defense Hotline', value: '+91 80 XXXX XXXX' },
+                { icon: Phone, label: 'Defense Hotline', value: '+91 9111227474' },
                 { icon: MapPin, label: 'R&D Center', value: 'Greater Noida, Uttar Pradesh' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
@@ -179,9 +208,9 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button type="submit" variant="hero" size="xl" className="w-full">
+              <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting}>
                 <Send className="w-5 h-5" />
-                Submit Inquiry
+                {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
               </Button>
             </form>
           </div>

@@ -58,12 +58,16 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 animate-fade-in-up animation-delay-600 px-4">
-            <Button variant="hero" size="xl" className="w-full sm:w-auto">
-              Explore Drones
-            </Button>
-            <Button variant="heroOutline" size="xl" className="w-full sm:w-auto">
-              Contact Defense Solutions
-            </Button>
+            <a href="#drones" className="w-full sm:w-auto">
+              <Button variant="hero" size="xl" className="w-full sm:w-auto">
+                Explore Drones
+              </Button>
+            </a>
+            <a href="#contact" className="w-full sm:w-auto">
+              <Button variant="heroOutline" size="xl" className="w-full sm:w-auto">
+                Contact Defense Solutions
+              </Button>
+            </a>
           </div>
 
           {/* Stats */}
@@ -72,7 +76,7 @@ const HeroSection = () => {
               <div className="flex items-center justify-center mb-1 sm:mb-2">
                 <Radar className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
               </div>
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-foreground">15 km</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-foreground">15+ km</div>
               <div className="text-[10px] sm:text-xs text-muted-foreground font-tech tracking-wider mt-1">MAX RANGE</div>
             </div>
             <div className="text-center border-x border-border/30 px-2">

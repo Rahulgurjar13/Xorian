@@ -1,3 +1,6 @@
+# Xorian Industries - Security Configuration
+# Block web crawlers and site downloaders to prevent content theft
+
 User-agent: Googlebot
 Allow: /
 
@@ -9,6 +12,58 @@ Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+# Block site downloaders and scrapers
+User-agent: HTTrack
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: WebReaper
+Disallow: /
+
+User-agent: WebSauger
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebWhacker
+Disallow: /
+
+User-agent: SiteSucker
+Disallow: /
+
+User-agent: teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: BackStreet
+Disallow: /
+
+User-agent: grub-client
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: Wayback
+Disallow: /
 
 User-agent: *
 Allow: /

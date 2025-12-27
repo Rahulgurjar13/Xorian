@@ -10,6 +10,13 @@
       content="Xorian Industries - India's leading indigenous defense drone manufacturer. Advanced surveillance systems and UAV technology."
     />
     <meta name="author" content="Xorian Industries" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="no-referrer">
 
     <meta
       property="og:title"
@@ -25,9 +32,41 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@XorianIndustries" />
     <meta name="twitter:image" content="/hero-drone.jpg" />
+    
+    <!-- Inline Security Script - Runs before page loads -->
+    <script>
+      // Immediate protection before main script loads
+      (function() {
+        // Disable right-click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Disable keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'F12' || 
+              (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+              (e.ctrlKey && (e.key === 'u' || e.key === 's')) ||
+              (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'j' || e.key === 'c')) ||
+              (e.metaKey && (e.key === 'u' || e.key === 's'))) {
+            e.preventDefault();
+            return false;
+          }
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', e => e.preventDefault());
+        
+        // Clear console
+        setInterval(() => console.clear(), 1000);
+        
+        // Anti-iframe protection
+        if (window.self !== window.top) {
+          window.top.location = window.self.location;
+        }
+      })();
+    </script>
   </head>
 
-  <body>
+  <body style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

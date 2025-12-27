@@ -1,3 +1,5 @@
+import logoImage from '@/assets/Gemini_Generated_Image_qd4wj2qd4wj2qd4w-removebg-preview.png';
+
 const Footer = () => {
   return (
     <footer className="py-12 sm:py-16 border-t border-border/30 relative">
@@ -7,18 +9,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12">
           {/* Logo */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 border border-foreground/50 flex items-center justify-center">
-                <span className="font-tech font-bold text-lg sm:text-xl text-foreground">X</span>
-              </div>
-              <div>
-                <span className="font-display font-semibold text-base sm:text-lg tracking-wider text-foreground">
-                  XORIAN
-                </span>
-                <span className="block text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] text-muted-foreground font-tech">
-                  INDUSTRIES
-                </span>
-              </div>
+            <div className="mb-4 sm:mb-6">
+              <a href="#" className="inline-block">
+                <img
+                  src={logoImage}
+                  alt="Xorian Industries"
+                  className="h-24 sm:h-28 w-auto hover:opacity-80 transition-opacity cursor-pointer"
+                />
+              </a>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-sm leading-relaxed">
               Indigenous defense technology solutions for a self-reliant India.
@@ -51,13 +49,18 @@ const Footer = () => {
               LEGAL
             </h4>
             <ul className="space-y-2 sm:space-y-3">
-              {['Privacy Policy', 'Terms of Use', 'Security', 'Compliance'].map((link) => (
-                <li key={link}>
+              {[
+                { name: 'Privacy Policy', path: '/privacy-policy' },
+                { name: 'Terms of Use', path: '/terms-of-use' },
+                { name: 'Security', path: '/security' },
+                { name: 'Compliance', path: '/compliance' },
+              ].map((link) => (
+                <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.path}
                     className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}

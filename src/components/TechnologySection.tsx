@@ -105,16 +105,16 @@ const TechnologySection = () => {
           {/* Specs List */}
           <div>
             <h3 className="text-2xl font-display font-semibold mb-8 text-foreground">
-              System Specifications
+              Core Capabilities
             </h3>
             <div className="space-y-6">
               {[
-                { label: 'Processor', value: 'XORIAN-X4 Quad Core @ 2.4GHz' },
-                { label: 'Memory', value: '16GB DDR5 + 512GB NVMe' },
-                { label: 'IMU', value: 'Triple Redundant 9-Axis MEMS' },
-                { label: 'GPS', value: 'NavIC + GPS + GLONASS RTK' },
-                { label: 'Update Rate', value: '1000Hz Control Loop' },
-                { label: 'Encryption', value: 'AES-256 + Quantum-Ready' },
+                { label: 'Processing', value: 'Military-Grade Computing Platform' },
+                { label: 'Navigation', value: 'Multi-Constellation Precision System' },
+                { label: 'Sensors', value: 'Advanced Redundant IMU Array' },
+                { label: 'Communication', value: 'Encrypted Secure Data Link' },
+                { label: 'Autonomy', value: 'AI-Powered Flight Control' },
+                { label: 'Security', value: 'Defense-Level Encryption Standards' },
               ].map((spec) => (
                 <div key={spec.label} className="flex justify-between items-center border-b border-border/30 pb-4">
                   <span className="text-muted-foreground font-tech text-sm tracking-wider">{spec.label}</span>

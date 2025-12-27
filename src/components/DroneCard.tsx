@@ -22,19 +22,51 @@ interface DroneData {
 const DroneCard = ({ drone }: { drone: DroneData }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const isUpcoming = drone.isUpcoming || false;
+  const isSurveillance = drone.category === 'SURVEILLANCE';
 
   return (
     <div className="glass-card overflow-hidden hover-lift group">
       {/* Image Area */}
-      <div className="relative h-48 sm:h-56 md:h-64 bg-background overflow-hidden">
+      <div 
+        className="relative h-48 sm:h-56 md:h-64 bg-background overflow-hidden"
+        onContextMenu={(e) => { if (isUpcoming && !isSurveillance) e.preventDefault(); }}
+      >
         <img
           src={drone.image}
           alt={drone.name}
-          className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-500 ${isUpcoming
-            ? 'opacity-40 blur-md scale-105'
-            : 'opacity-90 group-hover:opacity-100'
-            }`}
+          className={`w-full h-full object-cover transition-all duration-500 ${
+            isUpcoming && !isSurveillance
+              ? 'opacity-50 blur-md scale-105 protected-image'
+              : 'opacity-90 group-hover:opacity-100 group-hover:scale-105'
+          }`}
+          draggable="false"
+          onContextMenu={(e) => e.preventDefault()}
+          onDragStart={(e) => e.preventDefault()}
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            MozUserSelect: 'none',
+            msUserSelect: 'none',
+            WebkitTouchCallout: 'none',
+          }}
         />
+        {/* Security layers for upcoming drones - lighter effect */}
+        {isUpcoming && !isSurveillance && (
+          <>
+            {/* Light overlay to obscure while keeping visibility */}
+            <div 
+              className="absolute inset-0 bg-background/40 protected-overlay"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+            />
+            {/* Subtle blur overlay */}
+            <div 
+              className="absolute inset-0 backdrop-blur-sm bg-gradient-to-br from-background/30 via-transparent to-card/30 protected-overlay"
+              onContextMenu={(e) => e.preventDefault()}
+            />
+          </>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
 
         {/* Category Badge */}
@@ -59,11 +91,15 @@ const DroneCard = ({ drone }: { drone: DroneData }) => {
 
       {/* Content */}
       <div className="p-4 sm:p-6 md:p-8">
-        <h3 className="text-xl sm:text-2xl font-display font-bold mb-1 sm:mb-2 text-foreground">
-          {drone.name}
+        <h3 className={`text-xl sm:text-2xl font-display font-bold mb-1 sm:mb-2 text-foreground ${
+          isUpcoming && !isSurveillance ? 'blur-sm select-none' : ''
+        }`}>
+          {isUpcoming && !isSurveillance ? '████████████' : drone.name}
         </h3>
-        <p className="text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mb-3 sm:mb-4">
-          {drone.tagline}
+        <p className={`text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mb-3 sm:mb-4 ${
+          isUpcoming && !isSurveillance ? 'blur-[2px] select-none' : ''
+        }`}>
+          {isUpcoming && !isSurveillance ? '████████████████████' : drone.tagline}
         </p>
         <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
           {drone.description}

@@ -26,13 +26,13 @@ const drones = [
       'Real-time HD streaming',
       'Autonomous patrol modes',
     ],
-    isUpcoming: false,
+    isUpcoming: true,
   },
   {
-    name: 'GUARDIAN PRO',
+    name: 'Defense Drone',
     tagline: 'Long-Range Reconnaissance',
     category: 'RECONNAISSANCE',
-    description: 'Extended endurance platform for strategic reconnaissance missions with advanced sensor integration and satellite uplink.',
+    description: 'Advanced defense platform engineered for long-range reconnaissance and strategic defense operations with military-grade sensor systems and secure satellite communications.',
     image: droneGuardian,
     specs: [
       { icon: Clock, label: 'Flight Time', value: '24 Hours' },
