@@ -108,7 +108,7 @@ const Footer = () => {
             </span>
             <span className="text-accent">•</span>
             <span className="text-[10px] sm:text-xs font-tech tracking-wider text-muted-foreground whitespace-nowrap">
-              MADE IN INDIA
+              MADE IN INDIA 🇮🇳
             </span>
           </div>
         </div>
