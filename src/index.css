@@ -130,6 +130,72 @@
     content-visibility: auto;
   }
   
+  /* ══════════════════════════════════════════════════════════ */
+  /* IMAGE SECURITY PROTECTION                                  */
+  /* ══════════════════════════════════════════════════════════ */
+  
+  /* Prevent image dragging */
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Secure image containers - add invisible overlay */
+  .secure-image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .secure-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: all;
+    z-index: 10;
+  }
+  
+  /* Prevent image save context menu */
+  img,
+  .drone-image,
+  .secure-image {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Blur images on print to prevent screenshots */
+  @media print {
+    img,
+    .drone-image,
+    [class*="drone"],
+    [src*="drone"] {
+      filter: blur(20px) !important;
+      opacity: 0.3 !important;
+    }
+    
+    body::before {
+      content: 'CONFIDENTIAL - XORIAN INDUSTRIES';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      font-size: 100px;
+      color: rgba(196, 30, 58, 0.3);
+      z-index: 99999;
+      pointer-events: none;
+    }
+  }
+  
   /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *,

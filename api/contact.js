@@ -36,8 +36,8 @@ export default async function handler(req, res) {
       port: 465,
       secure: true,
       auth: {
-        user: process.env.EMAIL_USER || 'website.contact@xorianindustries.com',
-        pass: process.env.EMAIL_PASS || 'w8T#=NyOc485',
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
       tls: {
         rejectUnauthorized: false
@@ -65,7 +65,7 @@ export default async function handler(req, res) {
     const adminMailOptions = {
       from: {
         name: 'Xorian Industries',
-        address: process.env.EMAIL_USER || 'website.contact@xorianindustries.com'
+        address: process.env.EMAIL_USER
       },
       to: 'quieres@xorianindustries.com',
       replyTo: { name: name, address: email },
@@ -234,7 +234,7 @@ export default async function handler(req, res) {
     const userMailOptions = {
       from: {
         name: 'Xorian Industries',
-        address: process.env.EMAIL_USER || 'website.contact@xorianindustries.com'
+        address: process.env.EMAIL_USER
       },
       to: email,
       replyTo: { name: 'Xorian Industries', address: 'quieres@xorianindustries.com' },

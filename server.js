@@ -27,8 +27,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'website.contact@xorianindustries.com',
-    pass: 'w8T#=NyOc485',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
     rejectUnauthorized: false
@@ -78,7 +78,7 @@ app.post('/api/contact', async (req, res) => {
     const adminMailOptions = {
       from: {
         name: 'Xorian Industries',
-        address: 'website.contact@xorianindustries.com'
+        address: process.env.EMAIL_USER
       },
       to: 'quieres@xorianindustries.com',
       replyTo: {
@@ -261,7 +261,7 @@ app.post('/api/contact', async (req, res) => {
     const userMailOptions = {
       from: {
         name: 'Xorian Industries',
-        address: 'website.contact@xorianindustries.com'
+        address: process.env.EMAIL_USER
       },
       to: email,
       replyTo: {
@@ -567,5 +567,5 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📧 Email service configured for: website.contact@xorianindustries.com`);
+  console.log(`📧 Email service configured for: ${process.env.EMAIL_USER}`);
 });

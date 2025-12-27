@@ -27,18 +27,17 @@ const DroneCard = ({ drone }: { drone: DroneData }) => {
   return (
     <div className="glass-card overflow-hidden hover-lift group">
       {/* Image Area */}
-      <div 
-        className="relative h-48 sm:h-56 md:h-64 bg-background overflow-hidden"
-        onContextMenu={(e) => { if (isUpcoming && !isSurveillance) e.preventDefault(); }}
+      <div
+        className="relative h-48 sm:h-56 md:h-64 bg-background overflow-hidden secure-image-container"
+        onContextMenu={(e) => e.preventDefault()}
       >
         <img
           src={drone.image}
           alt={drone.name}
-          className={`w-full h-full object-cover transition-all duration-500 ${
-            isUpcoming && !isSurveillance
+          className={`w-full h-full object-cover transition-all duration-500 ${isUpcoming && !isSurveillance
               ? 'opacity-50 blur-md scale-105 protected-image'
               : 'opacity-90 group-hover:opacity-100 group-hover:scale-105'
-          }`}
+            }`}
           draggable="false"
           onContextMenu={(e) => e.preventDefault()}
           onDragStart={(e) => e.preventDefault()}
@@ -55,13 +54,13 @@ const DroneCard = ({ drone }: { drone: DroneData }) => {
         {isUpcoming && !isSurveillance && (
           <>
             {/* Light overlay to obscure while keeping visibility */}
-            <div 
+            <div
               className="absolute inset-0 bg-background/40 protected-overlay"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
             />
             {/* Subtle blur overlay */}
-            <div 
+            <div
               className="absolute inset-0 backdrop-blur-sm bg-gradient-to-br from-background/30 via-transparent to-card/30 protected-overlay"
               onContextMenu={(e) => e.preventDefault()}
             />
@@ -91,14 +90,12 @@ const DroneCard = ({ drone }: { drone: DroneData }) => {
 
       {/* Content */}
       <div className="p-4 sm:p-6 md:p-8">
-        <h3 className={`text-xl sm:text-2xl font-display font-bold mb-1 sm:mb-2 text-foreground ${
-          isUpcoming && !isSurveillance ? 'blur-sm select-none' : ''
-        }`}>
+        <h3 className={`text-xl sm:text-2xl font-display font-bold mb-1 sm:mb-2 text-foreground ${isUpcoming && !isSurveillance ? 'blur-sm select-none' : ''
+          }`}>
           {isUpcoming && !isSurveillance ? '████████████' : drone.name}
         </h3>
-        <p className={`text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mb-3 sm:mb-4 ${
-          isUpcoming && !isSurveillance ? 'blur-[2px] select-none' : ''
-        }`}>
+        <p className={`text-xs sm:text-sm text-muted-foreground font-tech tracking-wider mb-3 sm:mb-4 ${isUpcoming && !isSurveillance ? 'blur-[2px] select-none' : ''
+          }`}>
           {isUpcoming && !isSurveillance ? '████████████████████' : drone.tagline}
         </p>
         <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
