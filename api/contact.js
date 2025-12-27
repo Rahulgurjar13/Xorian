@@ -1,11 +1,4 @@
 import nodemailer from 'nodemailer';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs';
-
-// For Vercel, we need to read the logo from the public folder
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default async function handler(req, res) {
   // Enable CORS
@@ -66,7 +59,9 @@ export default async function handler(req, res) {
     // Logo URL for Vercel deployment
     const logoUrl = 'https://xorian.vercel.app/logo.png';
 
-    // Admin Email Template
+    // ═══════════════════════════════════════════════════════════════════════════
+    // ADMIN EMAIL - Military Grade Professional Template
+    // ═══════════════════════════════════════════════════════════════════════════
     const adminMailOptions = {
       from: {
         name: 'Xorian Industries',
@@ -77,11 +72,17 @@ export default async function handler(req, res) {
       subject: `◆ Defense Inquiry: ${organization} | ${application}`,
       html: `<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:#050505;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:#050505;-webkit-font-smoothing:antialiased;">
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#050505;">
   <tr>
     <td align="center" style="padding:30px 15px;">
+      
+      <!-- Classification Banner -->
       <table width="640" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td style="background:linear-gradient(90deg,#c41e3a 0%,#8b1528 100%);padding:10px 25px;">
@@ -94,7 +95,10 @@ export default async function handler(req, res) {
           </td>
         </tr>
       </table>
+      
       <table width="640" cellpadding="0" cellspacing="0" border="0" style="background-color:#0a0a0a;border:1px solid #1a1a1a;border-top:none;">
+        
+        <!-- Logo Section -->
         <tr>
           <td style="background:linear-gradient(180deg,#0d0d0d 0%,#0a0a0a 100%);padding:50px 40px;text-align:center;">
             <img src="${logoUrl}" alt="XORIAN INDUSTRIES" width="300" style="width:300px;max-width:100%;height:auto;display:block;margin:0 auto;" />
@@ -103,68 +107,130 @@ export default async function handler(req, res) {
             </div>
           </td>
         </tr>
+        
+        <!-- Status Bar -->
         <tr>
           <td style="background-color:#c41e3a;padding:18px 30px;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td><div style="font-size:13px;color:#ffffff;font-weight:800;letter-spacing:2px;text-transform:uppercase;">▶ NEW INQUIRY RECEIVED</div></td>
-                <td style="text-align:right;"><div style="font-size:11px;color:rgba(255,255,255,0.9);font-weight:600;">REF: ${referenceId}</div></td>
+                <td>
+                  <div style="font-size:13px;color:#ffffff;font-weight:800;letter-spacing:2px;text-transform:uppercase;">▶ NEW INQUIRY RECEIVED</div>
+                </td>
+                <td style="text-align:right;">
+                  <div style="font-size:11px;color:rgba(255,255,255,0.9);font-weight:600;">REF: ${referenceId}</div>
+                </td>
               </tr>
             </table>
           </td>
         </tr>
+        
+        <!-- Alert Box -->
+        <tr>
+          <td style="padding:30px 30px 0 30px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#141414 0%,#0f0f0f 100%);border-left:4px solid #c41e3a;">
+              <tr>
+                <td style="padding:20px 25px;">
+                  <div style="font-size:10px;color:#c41e3a;letter-spacing:2px;font-weight:700;margin-bottom:10px;">⚡ ACTION REQUIRED</div>
+                  <div style="color:#cccccc;font-size:14px;line-height:1.6;">
+                    New defense inquiry from <strong style="color:#ffffff;">${organization}</strong>. Reply directly to this email to respond to the client.
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        
+        <!-- Details Section -->
         <tr>
           <td style="padding:30px;">
             <div style="font-size:9px;color:#555555;letter-spacing:3px;font-weight:700;margin-bottom:20px;text-transform:uppercase;">Inquiry Details</div>
+            
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d0d0d;border:1px solid #1a1a1a;">
               <tr>
-                <td width="50%" style="padding:18px 22px;border-bottom:1px solid #1a1a1a;border-right:1px solid #1a1a1a;">
+                <td width="50%" style="padding:18px 22px;border-bottom:1px solid #1a1a1a;border-right:1px solid #1a1a1a;vertical-align:top;">
                   <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">ORGANIZATION</div>
                   <div style="font-size:16px;color:#ffffff;font-weight:600;">${organization}</div>
                 </td>
-                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;">
-                  <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">CONTACT</div>
+                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;vertical-align:top;">
+                  <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">CONTACT PERSON</div>
                   <div style="font-size:16px;color:#ffffff;font-weight:600;">${name}</div>
                 </td>
               </tr>
               <tr>
-                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;border-right:1px solid #1a1a1a;">
+                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;border-right:1px solid #1a1a1a;vertical-align:top;">
                   <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">EMAIL</div>
-                  <div style="font-size:14px;"><a href="mailto:${email}" style="color:#c41e3a;text-decoration:none;">${email}</a></div>
+                  <div style="font-size:14px;"><a href="mailto:${email}" style="color:#c41e3a;text-decoration:none;font-weight:500;">${email}</a></div>
                 </td>
-                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;">
+                <td style="padding:18px 22px;border-bottom:1px solid #1a1a1a;vertical-align:top;">
                   <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">PHONE</div>
-                  <div style="font-size:14px;color:#ffffff;">${phone || 'Not provided'}</div>
+                  <div style="font-size:14px;color:#ffffff;font-weight:500;">${phone || 'Not provided'}</div>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="padding:18px 22px;${requirements ? 'border-bottom:1px solid #1a1a1a;' : ''}">
-                  <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">APPLICATION</div>
+                <td colspan="2" style="padding:18px 22px;${requirements ? 'border-bottom:1px solid #1a1a1a;' : ''}vertical-align:top;">
+                  <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">APPLICATION / USE CASE</div>
                   <div style="font-size:15px;color:#ffffff;font-weight:500;">${application}</div>
                 </td>
               </tr>
-              ${requirements ? `<tr><td colspan="2" style="padding:18px 22px;">
-                <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:8px;">REQUIREMENTS</div>
-                <div style="font-size:13px;color:#aaaaaa;line-height:1.8;">${requirements}</div>
-              </td></tr>` : ''}
+              ${requirements ? `<tr>
+                <td colspan="2" style="padding:18px 22px;vertical-align:top;">
+                  <div style="font-size:9px;color:#555555;letter-spacing:2px;font-weight:600;margin-bottom:10px;">DETAILED REQUIREMENTS</div>
+                  <div style="font-size:13px;color:#aaaaaa;line-height:1.8;white-space:pre-wrap;">${requirements}</div>
+                </td>
+              </tr>` : ''}
             </table>
           </td>
         </tr>
+        
+        <!-- Action Steps -->
         <tr>
-          <td style="background:linear-gradient(180deg,#080808 0%,#050505 100%);padding:30px;text-align:center;border-top:1px solid #1a1a1a;">
-            <div style="font-size:12px;color:#555555;letter-spacing:5px;font-weight:700;">XORIAN INDUSTRIES</div>
-            <div style="font-size:8px;color:#2a2a2a;margin-top:10px;">© ${new Date().getFullYear()} Xorian Industries Pvt. Ltd.</div>
+          <td style="padding:0 30px 30px 30px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d0d0d;border:1px solid #1a1a1a;">
+              <tr>
+                <td style="padding:22px;">
+                  <div style="font-size:9px;color:#666666;letter-spacing:2px;font-weight:700;margin-bottom:18px;">RECOMMENDED ACTIONS</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr><td style="padding:5px 0;color:#888888;font-size:12px;"><span style="display:inline-block;width:28px;color:#c41e3a;font-weight:700;">01</span> Review inquiry requirements thoroughly</td></tr>
+                    <tr><td style="padding:5px 0;color:#888888;font-size:12px;"><span style="display:inline-block;width:28px;color:#c41e3a;font-weight:700;">02</span> Click Reply to respond directly to client</td></tr>
+                    <tr><td style="padding:5px 0;color:#888888;font-size:12px;"><span style="display:inline-block;width:28px;color:#c41e3a;font-weight:700;">03</span> Respond within 24-48 business hours</td></tr>
+                    <tr><td style="padding:5px 0;color:#888888;font-size:12px;"><span style="display:inline-block;width:28px;color:#c41e3a;font-weight:700;">04</span> Schedule demonstration if applicable</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
+        
+        <!-- Timestamp -->
+        <tr>
+          <td style="padding:0 30px 25px 30px;">
+            <div style="font-size:10px;color:#444444;letter-spacing:1px;">
+              ⏱ Received: ${currentDateTime} IST
+            </div>
+          </td>
+        </tr>
+        
+        <!-- Footer -->
+        <tr>
+          <td style="background:linear-gradient(180deg,#080808 0%,#050505 100%);padding:30px;text-align:center;border-top:1px solid #1a1a1a;">
+            <div style="font-size:12px;color:#555555;letter-spacing:5px;font-weight:700;margin-bottom:10px;">XORIAN INDUSTRIES</div>
+            <div style="font-size:9px;color:#3a3a3a;letter-spacing:2px;">Indigenous Defense Technology Solutions</div>
+            <div style="font-size:8px;color:#2a2a2a;margin-top:15px;">© ${new Date().getFullYear()} Xorian Industries Pvt. Ltd. • All Rights Reserved</div>
+          </td>
+        </tr>
+        
       </table>
     </td>
   </tr>
 </table>
+
 </body>
 </html>`
     };
 
-    // User Email Template
+    // ═══════════════════════════════════════════════════════════════════════════
+    // CUSTOMER EMAIL - Premium Defense Industry Template (FULL VERSION)
+    // ═══════════════════════════════════════════════════════════════════════════
     const userMailOptions = {
       from: {
         name: 'Xorian Industries',
@@ -175,15 +241,28 @@ export default async function handler(req, res) {
       subject: `Your Inquiry Has Been Received | Xorian Industries [${referenceId}]`,
       html: `<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:#050505;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:#050505;-webkit-font-smoothing:antialiased;">
+
+<!-- Outer Container -->
 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#050505;">
   <tr>
     <td align="center" style="padding:30px 15px;">
+      
+      <!-- Top Accent Line -->
       <table width="640" cellpadding="0" cellspacing="0" border="0">
-        <tr><td style="background:linear-gradient(90deg,#c41e3a 0%,#8b1528 50%,#c41e3a 100%);height:4px;"></td></tr>
+        <tr>
+          <td style="background:linear-gradient(90deg,#c41e3a 0%,#8b1528 50%,#c41e3a 100%);height:4px;"></td>
+        </tr>
       </table>
+      
+      <!-- Main Card -->
       <table width="640" cellpadding="0" cellspacing="0" border="0" style="background-color:#0a0a0a;border:1px solid #1a1a1a;border-top:none;">
+        
+        <!-- Logo Section -->
         <tr>
           <td style="background:linear-gradient(180deg,#0d0d0d 0%,#0a0a0a 100%);padding:55px 40px;text-align:center;">
             <img src="${logoUrl}" alt="XORIAN INDUSTRIES" width="320" style="width:320px;max-width:100%;height:auto;display:block;margin:0 auto;" />
@@ -192,6 +271,8 @@ export default async function handler(req, res) {
             </div>
           </td>
         </tr>
+        
+        <!-- Greeting -->
         <tr>
           <td style="padding:40px 40px 0 40px;">
             <p style="margin:0 0 25px 0;font-size:18px;color:#ffffff;">Dear <strong>${name}</strong>,</p>
@@ -200,62 +281,212 @@ export default async function handler(req, res) {
             </p>
           </td>
         </tr>
+        
+        <!-- Confirmation Box -->
         <tr>
           <td style="padding:35px 40px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0f0f0f;border:1px solid #1a1a1a;border-left:4px solid #c41e3a;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#0f0f0f 0%,#0c0c0c 100%);border:1px solid #1a1a1a;border-left:4px solid #c41e3a;">
               <tr>
                 <td style="padding:28px;">
                   <div style="font-size:11px;color:#c41e3a;letter-spacing:2px;font-weight:700;margin-bottom:18px;">✓ INQUIRY CONFIRMED</div>
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                    <tr><td style="padding:8px 0;font-size:12px;color:#666666;">Reference ID: <span style="color:#c41e3a;font-weight:700;">${referenceId}</span></td></tr>
-                    <tr><td style="padding:8px 0;font-size:12px;color:#666666;">Organization: <span style="color:#ffffff;">${organization}</span></td></tr>
-                    <tr><td style="padding:8px 0;font-size:12px;color:#666666;">Application: <span style="color:#ffffff;">${application}</span></td></tr>
-                    <tr><td style="padding:8px 0;font-size:12px;color:#666666;">Submitted: <span style="color:#888888;">${currentDateTime} IST</span></td></tr>
+                    <tr>
+                      <td style="padding:8px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="130" style="font-size:12px;color:#666666;">Reference ID:</td>
+                            <td style="font-size:13px;color:#c41e3a;font-weight:700;letter-spacing:1px;">${referenceId}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:8px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="130" style="font-size:12px;color:#666666;">Organization:</td>
+                            <td style="font-size:13px;color:#ffffff;">${organization}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:8px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="130" style="font-size:12px;color:#666666;">Application:</td>
+                            <td style="font-size:13px;color:#ffffff;">${application}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:8px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="130" style="font-size:12px;color:#666666;">Submitted:</td>
+                            <td style="font-size:12px;color:#888888;">${currentDateTime} IST</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
                   </table>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
+        
+        <!-- What Happens Next -->
         <tr>
           <td style="padding:0 40px 35px 40px;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d0d0d;border:1px solid #1a1a1a;">
               <tr>
-                <td style="padding:25px;">
-                  <div style="font-size:10px;color:#888888;letter-spacing:2px;font-weight:700;margin-bottom:18px;">CONTACT INFORMATION</div>
-                  <div style="font-size:13px;color:#666666;line-height:2;">
-                    Email: <a href="mailto:quieres@xorianindustries.com" style="color:#c41e3a;text-decoration:none;">quieres@xorianindustries.com</a><br>
-                    Phone: <span style="color:#ffffff;">+91 9111227474</span><br>
-                    Website: <a href="https://xorianindustries.com" style="color:#c41e3a;text-decoration:none;">xorianindustries.com</a>
+                <td style="padding:28px;">
+                  <div style="font-size:10px;color:#888888;letter-spacing:2px;font-weight:700;margin-bottom:20px;">WHAT HAPPENS NEXT?</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding:10px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="35" style="vertical-align:top;"><div style="width:24px;height:24px;background-color:#1a1a1a;border:1px solid #2a2a2a;text-align:center;line-height:24px;font-size:11px;color:#c41e3a;font-weight:700;">1</div></td>
+                            <td style="color:#aaaaaa;font-size:13px;line-height:1.6;padding-left:12px;">Our defense solutions team will review your requirements</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="35" style="vertical-align:top;"><div style="width:24px;height:24px;background-color:#1a1a1a;border:1px solid #2a2a2a;text-align:center;line-height:24px;font-size:11px;color:#c41e3a;font-weight:700;">2</div></td>
+                            <td style="color:#aaaaaa;font-size:13px;line-height:1.6;padding-left:12px;">You will receive a response within <strong style="color:#ffffff;">24-48 business hours</strong></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="35" style="vertical-align:top;"><div style="width:24px;height:24px;background-color:#1a1a1a;border:1px solid #2a2a2a;text-align:center;line-height:24px;font-size:11px;color:#c41e3a;font-weight:700;">3</div></td>
+                            <td style="color:#aaaaaa;font-size:13px;line-height:1.6;padding-left:12px;">We may reach out for additional technical specifications</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:10px 0;">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="35" style="vertical-align:top;"><div style="width:24px;height:24px;background-color:#1a1a1a;border:1px solid #2a2a2a;text-align:center;line-height:24px;font-size:11px;color:#c41e3a;font-weight:700;">4</div></td>
+                            <td style="color:#aaaaaa;font-size:13px;line-height:1.6;padding-left:12px;">Technical demonstrations can be arranged upon request</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        
+        <!-- Security Notice -->
+        <tr>
+          <td style="padding:0 40px 35px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d0d0d;border:1px solid #1a1a1a;border-left:4px solid #444444;">
+              <tr>
+                <td style="padding:22px 25px;">
+                  <div style="font-size:10px;color:#666666;letter-spacing:2px;font-weight:600;margin-bottom:10px;">🔒 SECURITY & CONFIDENTIALITY</div>
+                  <div style="font-size:12px;color:#666666;line-height:1.7;">
+                    All communications are conducted through secure channels with appropriate verification procedures. Your information is protected under strict confidentiality agreements.
                   </div>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
+        
+        <!-- Contact Section -->
+        <tr>
+          <td style="padding:0 40px 35px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0d0d0d;border:1px solid #1a1a1a;">
+              <tr>
+                <td style="padding:25px;">
+                  <div style="font-size:10px;color:#888888;letter-spacing:2px;font-weight:700;margin-bottom:18px;">CONTACT INFORMATION</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding:6px 0;font-size:13px;">
+                        <span style="color:#666666;">Email:</span>
+                        <a href="mailto:quieres@xorianindustries.com" style="color:#c41e3a;text-decoration:none;margin-left:8px;">quieres@xorianindustries.com</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;font-size:13px;">
+                        <span style="color:#666666;">Phone:</span>
+                        <span style="color:#ffffff;margin-left:8px;">+91 9111227474</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;font-size:13px;">
+                        <span style="color:#666666;">HQ:</span>
+                        <span style="color:#aaaaaa;margin-left:8px;">Kanpur, Uttar Pradesh, India</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;font-size:13px;">
+                        <span style="color:#666666;">Website:</span>
+                        <a href="https://xorianindustries.com" style="color:#c41e3a;text-decoration:none;margin-left:8px;">xorianindustries.com</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        
+        <!-- Closing -->
         <tr>
           <td style="padding:0 40px 40px 40px;">
+            <p style="margin:0 0 25px 0;font-size:14px;color:#aaaaaa;line-height:1.8;">
+              We look forward to partnering with <strong style="color:#ffffff;">${organization}</strong> and demonstrating how our indigenous technology can meet your operational requirements.
+            </p>
             <p style="margin:0;font-size:14px;color:#ffffff;">
               Warm regards,<br><br>
-              <strong>Xorian Industries</strong><br>
+              <strong style="font-size:15px;">Xorian Industries</strong><br>
               <span style="font-size:12px;color:#666666;">Defense Solutions & Unmanned Systems Division</span>
             </p>
           </td>
         </tr>
+        
+        <!-- Footer -->
         <tr>
-          <td style="background:linear-gradient(180deg,#080808 0%,#050505 100%);padding:35px;text-align:center;border-top:1px solid #1a1a1a;">
-            <div style="font-size:13px;color:#555555;letter-spacing:5px;font-weight:700;">XORIAN INDUSTRIES</div>
-            <div style="font-size:9px;color:#333333;margin-top:8px;">Made in India 🇮🇳</div>
-            <div style="font-size:8px;color:#2a2a2a;margin-top:12px;">© ${new Date().getFullYear()} Xorian Industries Pvt. Ltd.</div>
+          <td style="background:linear-gradient(180deg,#080808 0%,#050505 100%);padding:35px 40px;text-align:center;border-top:1px solid #1a1a1a;">
+            <div style="font-size:13px;color:#555555;letter-spacing:5px;font-weight:700;margin-bottom:12px;">XORIAN INDUSTRIES</div>
+            <div style="font-size:9px;color:#3a3a3a;letter-spacing:2px;margin-bottom:5px;">Engineering Excellence in Unmanned Aerial Systems</div>
+            <div style="font-size:9px;color:#333333;letter-spacing:1px;">Advancing India's Defense Capabilities</div>
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid #1a1a1a;">
+              <div style="font-size:8px;color:#2a2a2a;">© ${new Date().getFullYear()} Xorian Industries Pvt. Ltd. • All Rights Reserved</div>
+              <div style="font-size:8px;color:#222222;margin-top:5px;">Made in India 🇮🇳</div>
+            </div>
           </td>
         </tr>
+        
       </table>
+      
+      <!-- Bottom Accent -->
       <table width="640" cellpadding="0" cellspacing="0" border="0">
-        <tr><td style="background:linear-gradient(90deg,#c41e3a 0%,#8b1528 50%,#c41e3a 100%);height:3px;"></td></tr>
+        <tr>
+          <td style="background:linear-gradient(90deg,#c41e3a 0%,#8b1528 50%,#c41e3a 100%);height:3px;"></td>
+        </tr>
       </table>
+      
     </td>
   </tr>
 </table>
+
 </body>
 </html>`
     };
