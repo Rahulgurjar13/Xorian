@@ -44,7 +44,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-3 sm:mb-4 font-display animate-fade-in-up animation-delay-400 px-4">
-            Advanced Surveillance Systems • Custom Flight Control • Defense Solutions
+            Advanced Surveillance Systems • Defense Solutions
           </p>
 
           {/* Made in India Badge */}
